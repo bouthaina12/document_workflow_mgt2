@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .header {
+            width: 100%;
+            padding: 1rem;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1200px;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-right: 2rem;
+        }
+
+        .sidebar h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar ul li a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            flex: 1;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .main-content h1 {
+            margin-top: 0;
+        }
+
+        .upload-container {
+            margin-top: 2rem;
+            text-align: center;
+            border: 2px dashed #007bff;
+            border-radius: 8px;
+            padding: 2rem;
+            background-color: #f9f9f9;
+        }
+
+        .upload-container:hover {
+            background-color: #f1f1f1;
+        }
+
+        .upload-container input[type="file"] {
+            display: none;
+        }
+
+        .upload-container label {
+            display: block;
+            font-size: 1.1rem;
+            color: #007bff;
+            cursor: pointer;
+            padding: 1rem;
+            border: 2px solid #007bff;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .upload-container label:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            background-color: #007bff;
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>DocFlow AI</h1>
+        <div class="navigation">
+            <a href="/upload" style="color: white; margin: 0 15px;">Upload Document</a>
+            <a href="/notifications" style="color: white; margin: 0 15px;">Notifications</a>
+            <a href="/documents" style="color: white; margin: 0 15px;">View Documents</a>
+            <a href="/logout" style="color: white; margin: 0 15px;">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="/tasks/">My Tasks</a></li>
+                <li><a href="/resources/">Company Resources</a></li>
+                <li><a href="/profile/">Edit Profile</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h1>Welcome, Employee!</h1>
+            <p>This is your dashboard where you can view documents and participate in workflows.</p>
+            <section>
+                <h2>Recent Updates</h2>
+                <ul>
+                    <li>New task assigned: "Monthly Report"</li>
+                    <li>Upcoming team meeting: "Project Review"</li>
+                    <li>Completed tasks summary</li>
+                </ul>
+            </section>
+            <div class="upload-container">
+                <label for="file-upload">Drag and drop a file here, or click to select a file</label>
+                <input type="file" id="file-upload">
+                <button class="btn" onclick="uploadFile()">Upload</button>
+                <p class="error" id="upload-error"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function uploadFile() {
+            const fileInput = document.getElementById('file-upload');
+            const errorElement = document.getElementById('upload-error');
+
+            if (fileInput.files.length === 0) {
+                errorElement.textContent = 'Please select a file to upload.';
+                return;
+            }
+
+            // Perform file upload logic here (e.g., AJAX request to server)
+            console.log('File uploaded:', fileInput.files[0]);
+            errorElement.textContent = ''; // Clear error message
+        }
+    </script>
+</body>
+</html>
